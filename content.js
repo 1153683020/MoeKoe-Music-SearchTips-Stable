@@ -1,4 +1,4 @@
-// content.js - 固定最大建议数10
+// content.js - 固定最大建议数10，支持点击和回车搜索
 (function() {
   'use strict';
 
@@ -10,8 +10,8 @@
       this.items = [];
       this.input = null;
       this.config = {
-        maxResults: 10,        // 写死为10
-        hotThreshold: 100,     // 固定热度阈值（可保留，但不再调节）
+        maxResults: 10,
+        hotThreshold: 100,
         enableHistory: true,
         autoSearch: true
       };
@@ -45,6 +45,20 @@
       return panel;
     }
 
+    // ★ 触发搜索（模拟回车键）
+    triggerSearch() {
+      if (!this.input) return;
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        code: 'Enter',
+        keyCode: 13,
+        which: 13,
+        bubbles: true,
+        cancelable: true
+      });
+      this.input.dispatchEvent(enterEvent);
+    }
+
     update(suggestions) {
       this.items = suggestions;
       this.highlightedIndex = -1;
@@ -68,8 +82,12 @@
         el.addEventListener('click', function() {
           const idx = parseInt(this.dataset.index);
           if (self.input && self.items[idx]) {
+            // 设置搜索框值
             self.input.value = self.items[idx].name;
+            // 触发 input 事件（如有必要）
             self.input.dispatchEvent(new Event('input', { bubbles: true }));
+            // ★ 触发回车搜索
+            self.triggerSearch();
             self.hide();
           }
         });
@@ -106,10 +124,12 @@
         el.style.background = i === this.highlightedIndex ? '#f0f9f4' : '';
       });
     }
+    // ★ 键盘回车选中时触发搜索
     selectHighlighted() {
       if (this.highlightedIndex >= 0 && this.input && this.items[this.highlightedIndex]) {
         this.input.value = this.items[this.highlightedIndex].name;
         this.input.dispatchEvent(new Event('input', { bubbles: true }));
+        this.triggerSearch();
         this.hide();
       }
     }
@@ -190,7 +210,7 @@
         const raw = await fetchSuggestions(keyword);
         const filtered = raw
           .filter(item => (item.hot || 0) >= suggest.config.hotThreshold)
-          .slice(0, suggest.config.maxResults); // 固定为10
+          .slice(0, suggest.config.maxResults);
 
         console.log('[搜索建议] 显示最大条数:', suggest.config.maxResults);
         suggest.update(filtered);
@@ -206,7 +226,7 @@
         case 'Enter':
           if (suggest.visible && suggest.highlightedIndex >= 0) {
             e.preventDefault();
-            suggest.selectHighlighted();
+            suggest.selectHighlighted(); // 会触发搜索
           }
           break;
         case 'Escape': suggest.hide(); break;
