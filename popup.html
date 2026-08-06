@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 340px; font-family: sans-serif; color: #333; background: #fff; }
+    .panel { padding: 16px; }
+    .header { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: #1db954; }
+    .info-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 14px; }
+    .info-card { background: #f8f8f8; border-radius: 8px; padding: 10px; text-align: center; }
+    .info-value { font-size: 22px; font-weight: 700; color: #333; }
+    .info-label { font-size: 11px; color: #999; margin-top: 4px; }
+    .info-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+    .info-key { color: #666; }
+    .info-val { color: #333; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="header">🔍 搜索建议</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-value">10</div>
+        <div class="info-label">固定最大建议数</div>
+      </div>
+    </div>
+    <div class="info-item">
+      <span class="info-key">状态</span>
+      <span class="info-val">运行中</span>
+    </div>
+    <div class="info-item">
+      <span class="info-key">版本</span>
+      <span class="info-val">1.0.0 (固定10条)</span>
+    </div>
+  </div>
+</body>
+</html>

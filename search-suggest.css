@@ -1,0 +1,27 @@
+/* search-suggest.css */
+.moekoe-search-suggest-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99998;
+  background: transparent;
+}
+
+.moekoe-search-suggest-panel {
+  --suggest-surface: #fff;
+  --suggest-border: #e0e0e0;
+  --suggest-text: #333;
+  --suggest-muted: #999;
+  --suggest-hover: rgba(0, 0, 0, 0.04);
+  --suggest-primary: #1db954;
+}
+
+:is(.dark .moekoe-search-suggest-panel) {
+  --suggest-surface: #2a2a2a;
+  --suggest-border: #404040;
+  --suggest-text: rgba(255, 255, 255, 0.86);
+  --suggest-muted: rgba(255, 255, 255, 0.56);
+  --suggest-hover: rgba(255, 255, 255, 0.08);
+}
