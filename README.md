@@ -22,9 +22,11 @@ MoeKoe-Music-SearchTips，为MoeKoe Music软件添加搜索候选功能（稳定
 - 目前为稳定过渡版本，建议数量固定为 10 条，后续可根据环境支持开放自定义。
 
 ## 📦 安装
-直链下载加速地址：`https://fastly.jsdelivr.net/gh/1153683020/MoeKoe-Music-SearchTips-Stable/MoeKoe-Music-SearchTips.zip`
+~~直链下载加速地址：`https://fastly.jsdelivr.net/gh/1153683020/MoeKoe-Music-SearchTips-Stable/MoeKoe-Music-SearchTips.zip`~~
 
-将插件文件夹放入 MoeKoe Music 的 `plugins/extensions` 目录，或在插件管理页通过“安装插件”选择 ZIP 包安装。
+~~将插件文件夹放入 MoeKoe Music 的 `plugins/extensions` 目录，或在插件管理页通过“安装插件”选择 ZIP 包安装。~~
+
+在插件市场找到本插件，直接点击安装即可
 
 ## 👤 作者
 AZLight
